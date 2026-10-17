@@ -19,7 +19,7 @@ been performed.
 
 | Program | Status | Notes |
 | --- | --- | --- |
-| `rome bash` | Pending | Re-run manually with the renamed standalone binary |
+| `rome bash` | Verified | Linux amd64, 2026-10-17: standalone `rome` binary built from `fccd824`; interactive bash in a PTY, browser input and output on the same session via `ROME_LISTEN=127.0.0.1`, Ctrl+C helper interrupted `sleep 60` (exit 130), and `exit 7` was returned as Rome's exit code |
 | `rome python` | Unavailable | No `python` or `python3` in the current PATH |
 | `rome vim` | Unavailable | Not installed in the current PATH |
 | `rome top` | Unavailable | Not installed in the current PATH |
@@ -138,6 +138,12 @@ Complete these checks after publishing `v0.2.0`:
 - [ ] Confirm `rome version` reports `rome 0.2.0`
 - [ ] Run `brew test rome`, then uninstall it
 - [ ] Record Linux and macOS amd64/arm64 execution where hardware is available
+
+Recorded so far: Linux amd64, 2026-10-17. `rome_0.2.0_linux_amd64.tar.gz` downloaded
+from the v0.2.0 release, its checksum verified against `rome_0.2.0_checksums.txt`,
+its SHA-256 matches `Formula/rome.rb` in `ompatel-24/homebrew-tap`, and the
+extracted binary reports `rome 0.2.0`. macOS and arm64 execution, Homebrew
+install, and provenance verification remain unchecked above.
 
 See [releasing.md](releasing.md) for the required secret, tag procedure, and
 rollback rules. Never include the tap token in test logs or this checklist.

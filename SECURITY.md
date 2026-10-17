@@ -73,9 +73,16 @@ for every platform archive and the checksum manifest. Verify both before
 installing a downloaded binary:
 
 ```bash
-shasum -a 256 -c rome_0.2.0_checksums.txt
+shasum -a 256 --ignore-missing -c rome_0.2.0_checksums.txt
 gh attestation verify rome_0.2.0_darwin_arm64.tar.gz --repo ompatel-24/rome
+gh attestation verify rome_0.2.0_checksums.txt --repo ompatel-24/rome
 ```
+
+The v0.2.0 release assets are `rome_0.2.0_darwin_amd64.tar.gz`,
+`rome_0.2.0_darwin_arm64.tar.gz`, `rome_0.2.0_linux_amd64.tar.gz`,
+`rome_0.2.0_linux_arm64.tar.gz`, and `rome_0.2.0_checksums.txt`. Substitute the
+archive for your platform. `--ignore-missing` lets the manifest check only the
+archives you downloaded.
 
 The release workflow uses the repository-scoped `GITHUB_TOKEN` only for Rome's
 GitHub release. Homebrew formula publishing uses a separate fine-grained token
